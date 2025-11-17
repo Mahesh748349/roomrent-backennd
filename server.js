@@ -10,13 +10,18 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
+// MongoDB connection - UPDATED VERSION
+const MONGODB_URI = process.env.MONGODB_URI;
+
+console.log("🔗 Attempting MongoDB connection...");
+console.log("MongoDB URI:", MONGODB_URI ? "Set" : "Not set");
+
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/smartrent")
-  .then(() => {
-    console.log("MongoDB connected successfully");
-  })
+  .connect(MONGODB_URI)
+  .then(() => console.log("✅ MongoDB connected successfully"))
   .catch((err) => {
-    console.log("MongoDB connection error:", err.message);
+    console.log("❌ MongoDB connection error:", err.message);
+    console.log("Please check your MONGODB_URI in environment variables");
   });
 
 // Routes
