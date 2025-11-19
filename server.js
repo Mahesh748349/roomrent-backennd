@@ -29,6 +29,7 @@ app.use("/api/auth", require("./routes/auth"));
 app.use("/api/properties", require("./routes/properties"));
 app.use("/api/tenants", require("./routes/tenants"));
 app.use("/api/payments", require("./routes/payments"));
+app.use("/api/maintenance", require("./routes/maintenance"));
 
 // Basic route
 app.get("/", (req, res) => {
